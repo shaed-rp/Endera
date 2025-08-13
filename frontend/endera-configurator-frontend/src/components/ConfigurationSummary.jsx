@@ -17,8 +17,7 @@ import {
   Weight,
   Ruler
 } from 'lucide-react'
-
-const API_BASE_URL = 'http://localhost:3001/api'
+import { API_BASE_URL, API_ENDPOINTS } from '../lib/api.js'
 
 function ConfigurationSummary({ 
   selectedChassis, 
@@ -41,7 +40,7 @@ function ConfigurationSummary({
   const fetchPricing = async () => {
     try {
       setLoadingPricing(true)
-      const response = await fetch(`${API_BASE_URL}/pricing/sessions/${sessionId}?userType=${userType}`)
+      const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.PRICING(sessionId)}?userType=${userType}`)
       if (!response.ok) {
         throw new Error('Failed to fetch pricing')
       }
@@ -58,7 +57,7 @@ function ConfigurationSummary({
     setIsGeneratingQuote(true)
     
     try {
-      const response = await fetch(`${API_BASE_URL}/quotes`, {
+      const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.QUOTES}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,7 +82,7 @@ function ConfigurationSummary({
       
       if (result.success) {
         // Download the PDF
-        const pdfResponse = await fetch(`${API_BASE_URL}/quotes/${result.data.quoteId}/pdf`)
+        const pdfResponse = await fetch(`${API_BASE_URL}${API_ENDPOINTS.QUOTE_PDF(result.data.quoteId)}`)
         
         if (pdfResponse.ok) {
           const blob = await pdfResponse.blob()

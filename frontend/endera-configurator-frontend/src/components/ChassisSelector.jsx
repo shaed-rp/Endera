@@ -11,8 +11,7 @@ import {
   DollarSign,
   CheckCircle
 } from 'lucide-react'
-
-const API_BASE_URL = 'http://localhost:3001/api'
+import { API_BASE_URL, API_ENDPOINTS } from '../lib/api.js'
 
 function ChassisSelector({ selectedChassis, onChassisSelect, userType = 'customer' }) {
   const [chassisOptions, setChassisOptions] = useState([])
@@ -26,7 +25,7 @@ function ChassisSelector({ selectedChassis, onChassisSelect, userType = 'custome
   const fetchChassisOptions = async () => {
     try {
       setLoading(true)
-      const response = await fetch(`${API_BASE_URL}/chassis`)
+      const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.CHASSIS}`)
       if (!response.ok) {
         throw new Error('Failed to fetch chassis options')
       }

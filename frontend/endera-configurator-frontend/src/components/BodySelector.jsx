@@ -14,8 +14,7 @@ import {
   Battery,
   Gauge
 } from 'lucide-react'
-
-const API_BASE_URL = 'http://localhost:3001/api'
+import { API_BASE_URL, API_ENDPOINTS } from '../lib/api.js'
 
 function BodySelector({ selectedChassis, selectedBody, onBodySelect, userType = 'customer' }) {
   const [bodyOptions, setBodyOptions] = useState([])
@@ -32,7 +31,7 @@ function BodySelector({ selectedChassis, selectedBody, onBodySelect, userType = 
   const fetchBodyOptions = async () => {
     try {
       setLoading(true)
-      const response = await fetch(`${API_BASE_URL}/bodies`)
+      const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.BODIES}`)
       if (!response.ok) {
         throw new Error('Failed to fetch body options')
       }

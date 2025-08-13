@@ -15,8 +15,7 @@ import {
 import ChassisSelector from '../components/ChassisSelector.jsx'
 import BodySelector from '../components/BodySelector.jsx'
 import ConfigurationSummary from '../components/ConfigurationSummary.jsx'
-
-const API_BASE_URL = 'http://localhost:3001/api'
+import { API_BASE_URL, API_ENDPOINTS } from '../lib/api.js'
 
 const CONFIGURATION_STEPS = [
   { id: 'chassis', title: 'Select Chassis', description: 'Choose Ford E-Series chassis' },
@@ -62,7 +61,7 @@ function ConfiguratorPage({ userType = 'customer' }) {
   const initializeSession = async () => {
     try {
       setLoading(true)
-      const response = await fetch(`${API_BASE_URL}/configurations/sessions`, {
+      const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.SESSIONS}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -96,7 +95,7 @@ function ConfiguratorPage({ userType = 'customer' }) {
     // Save selection to session
     if (sessionId) {
       try {
-        await fetch(`${API_BASE_URL}/configurations/sessions/${sessionId}/selections`, {
+        await fetch(`${API_BASE_URL}${API_ENDPOINTS.SESSION_SELECTIONS(sessionId)}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -122,7 +121,7 @@ function ConfiguratorPage({ userType = 'customer' }) {
     // Save selection to session
     if (sessionId) {
       try {
-        await fetch(`${API_BASE_URL}/configurations/sessions/${sessionId}/selections`, {
+        await fetch(`${API_BASE_URL}${API_ENDPOINTS.SESSION_SELECTIONS(sessionId)}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
