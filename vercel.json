@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd frontend/endera-configurator-frontend && npm install && npm run build",
+  "buildCommand": "cd frontend/endera-configurator-frontend && npm run build",
   "outputDirectory": "frontend/endera-configurator-frontend/dist",
   "installCommand": "cd frontend/endera-configurator-frontend && npm install",
   "framework": "vite",

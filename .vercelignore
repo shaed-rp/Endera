@@ -1,0 +1,5 @@
+# Ignore backend and deployment folders for frontend-only deployment
+backend/
+deployment/
+node_modules/
+*.log
