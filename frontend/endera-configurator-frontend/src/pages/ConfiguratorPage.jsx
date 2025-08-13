@@ -12,6 +12,9 @@ import {
   AlertCircle
 } from 'lucide-react'
 
+// Import components
+import Logo from '../components/ui/logo.jsx'
+
 import ChassisSelector from '../components/ChassisSelector.jsx'
 import BodySelector from '../components/BodySelector.jsx'
 import ConfigurationSummary from '../components/ConfigurationSummary.jsx'
@@ -217,9 +220,12 @@ function ConfiguratorPage({ userType = 'customer' }) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Vehicle Configurator</h1>
-              <p className="text-gray-600">Configure your Endera electric vehicle</p>
+            <div className="flex items-center space-x-4">
+              <Logo size="md" />
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900">Vehicle Configurator</h1>
+                <p className="text-gray-600">Configure your Endera electric vehicle</p>
+              </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="text-sm text-gray-500">

@@ -19,8 +19,12 @@ import {
 } from 'lucide-react'
 import './App.css'
 
+// Import components
+import Logo from './components/ui/logo.jsx'
+
 // Import pages
 import ConfiguratorPage from './pages/ConfiguratorPage.jsx'
+import CatalogPage from './pages/CatalogPage.jsx'
 
 // Header Component
 function Header({ userType, setUserType }) {
@@ -31,8 +35,7 @@ function Header({ userType, setUserType }) {
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold endera-text-purple">ENDERA</h1>
-              <p className="text-xs text-gray-500 -mt-1">Vehicle Configurator</p>
+              <Logo size="md" showText={true} />
             </div>
           </div>
 
@@ -86,7 +89,7 @@ function HeroSection() {
                 Start Configuring
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600" asChild>
+            <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600" asChild>
               <a href="/catalog">
                 <Search className="mr-2 h-5 w-5" />
                 Browse Catalog
@@ -290,7 +293,7 @@ function App() {
             </main>
           } />
           <Route path="/configurator" element={<ConfiguratorPage userType={userType} />} />
-          <Route path="/catalog" element={<div className="min-h-screen flex items-center justify-center"><h1 className="text-2xl">Catalog Page Coming Soon</h1></div>} />
+          <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/about" element={<div className="min-h-screen flex items-center justify-center"><h1 className="text-2xl">About Page Coming Soon</h1></div>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
@@ -300,7 +303,7 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <h3 className="text-lg font-bold mb-4">ENDERA</h3>
+                <Logo size="md" variant="white" className="mb-4" />
                 <p className="text-gray-400">
                   America's only vertically integrated OEM for Class 4 electric shuttles and school buses.
                 </p>
